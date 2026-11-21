@@ -79,6 +79,7 @@ with lines like `from market_data_lab.binance.klines import load_klines`.
 | scripts/binance/04_explore_funding.py | Loads and checks funding, yearly rate summary, chart |
 | scripts/hyperliquid/01_fetch_funding.py | Fetches one month of BTC funding history, saves the raw JSON |
 | scripts/hyperliquid/02_explore_funding.py | Loads and checks it, converts text to numbers, summary, chart |
+| scripts/compare/01_funding_binance_vs_hyperliquid.py | Daily average yearly funding of both venues side by side, the gap, a chart |
 
 ## What the data looks like
 
@@ -105,13 +106,17 @@ Funding rates (Hyperliquid BTC, from the API):
   exactly 10.95 percent a year (0.0000125 per hour). The reason is not
   yet checked against the documentation.
 
+Comparison (daily averages, October 2026):
+- Binance 4.77 percent, Hyperliquid 8.79 percent a year. Hyperliquid was higher on 28 of 31 days.
+- Both sit at exactly 10.95 percent a year when the market is calm. That is the fixed
+  interest component both exchanges document: 0.01 percent per 8 hours, which is
+  0.00125 percent per hour.
+
 One month, one coin, two venues with different payment rhythms: no
 conclusion about carry yet.
 
 ## Next steps
 
-- Compare Hyperliquid and Binance funding for October 2026 (one number
-  per day for each, then side by side).
 - Add a DefiLlama script (a GET request). It is the last planned source.
 - Add tests (pytest) for the quality checks.
 - Redo the analysis in Polars, then explore the same files with SQL in DuckDB.
@@ -127,3 +132,4 @@ Run these from the repo root.
     uv run python scripts/binance/04_explore_funding.py
     uv run python scripts/hyperliquid/01_fetch_funding.py
     uv run python scripts/hyperliquid/02_explore_funding.py
+    uv run python scripts/compare/01_funding_binance_vs_hyperliquid.py
