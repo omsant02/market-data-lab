@@ -24,6 +24,7 @@ ax.axhline(0, color="grey", linewidth=1)  # the zero line: below it, shorts pay 
 ax.set_title("BTCUSDT funding rate, annualised %, Oct 2026")
 ax.set_xlabel("time (UTC)")
 ax.set_ylabel("percent per year")
+Path("data/binance/charts").mkdir(parents=True, exist_ok=True)
 fig.savefig("data/binance/charts/funding_oct_2026.png")
 plt.close(fig)
 print("saved: data/binance/charts/funding_oct_2026.png")
