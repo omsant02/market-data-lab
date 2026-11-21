@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from market_data_lab.hyperliquid.funding import check_hl_funding, load_hl_funding
 from market_data_lab.common.report import section
 
-RAW_FILE = Path("data/raw/hyperliquid-BTC-funding-2026-10.json")
-CHART_FILE = Path("data/hyperliquid_funding_oct_2026.png")
+RAW_FILE = Path("data/hyperliquid/raw/hyperliquid-BTC-funding-2026-10.json")
+CHART_FILE = Path("data/hyperliquid/charts/funding_oct_2026.png")
 
 df = load_hl_funding(RAW_FILE)
 

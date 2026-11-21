@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from market_data_lab.binance.funding import check_funding, load_funding
 from market_data_lab.common.report import section
 
-df = load_funding(Path("data/raw/BTCUSDT-fundingRate-2026-10.csv"))
+df = load_funding(Path("data/binance/raw/BTCUSDT-fundingRate-2026-10.csv"))
 
 section("1. First 3 rows (rate per payment, then as a yearly figure)")
 print(df[["calc_time", "last_funding_rate", "annualised"]].head(3))
@@ -24,6 +24,6 @@ ax.axhline(0, color="grey", linewidth=1)  # the zero line: below it, shorts pay 
 ax.set_title("BTCUSDT funding rate, annualised %, Oct 2026")
 ax.set_xlabel("time (UTC)")
 ax.set_ylabel("percent per year")
-fig.savefig("data/funding_oct_2026.png")
+fig.savefig("data/binance/charts/funding_oct_2026.png")
 plt.close(fig)
-print("saved: data/funding_oct_2026.png")
+print("saved: data/binance/charts/funding_oct_2026.png")

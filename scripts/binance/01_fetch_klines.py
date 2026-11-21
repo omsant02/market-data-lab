@@ -6,7 +6,7 @@ symbol = "BTCUSDT"
 interval = "1h"
 month = "2026-10"
 
-raw_dir = Path("data/raw")
+raw_dir = Path("data/binance/raw")
 
 url = kline_url(symbol, interval, month)
 print(url)

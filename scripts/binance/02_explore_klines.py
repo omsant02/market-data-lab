@@ -14,7 +14,7 @@ def section(title: str) -> None:
 
 
 # load the October file: times become readable, useless column removed
-df = load_klines(Path("data/raw/BTCUSDT-1h-2026-10.csv"))
+df = load_klines(Path("data/binance/raw/BTCUSDT-1h-2026-10.csv"))
 
 section("1. First 3 rows (time is readable, in UTC)")
 # we pick 4 columns so the table is not cut off with "..."
@@ -39,6 +39,6 @@ ax.plot(df["open_time"], df["close"])
 ax.set_title("BTCUSDT close, 1h candles, Oct 2026")
 ax.set_xlabel("time (UTC)")
 ax.set_ylabel("close")
-fig.savefig("data/close_oct_2026.png")
+fig.savefig("data/binance/charts/close_oct_2026.png")
 plt.close(fig)
-print("saved: data/close_oct_2026.png")
+print("saved: data/binance/charts/close_oct_2026.png")

@@ -4,7 +4,7 @@ from market_data_lab.binance.files import download, funding_url, unzip
 
 symbol = "BTCUSDT"
 month = "2026-10"
-raw_dir = Path("data/raw")
+raw_dir = Path("data/binance/raw")
 
 
 def section(title: str) -> None:
@@ -18,7 +18,7 @@ section("1. Address we download from")
 url = funding_url(symbol, month)
 print(url)
 
-# download the zip, then unzip it into data/raw
+# download the zip, then unzip it into data/binance/raw
 zip_path = download(url, raw_dir / f"{symbol}-fundingRate-{month}.zip")
 files = unzip(zip_path, raw_dir)
 

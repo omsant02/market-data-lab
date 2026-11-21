@@ -6,7 +6,7 @@ from market_data_lab.common.report import section
 
 coin = "BTC"
 year, month = 2026, 10
-out_path = Path(f"data/raw/hyperliquid-{coin}-funding-{year}-{month:02d}.json")
+out_path = Path(f"data/hyperliquid/raw/hyperliquid-{coin}-funding-{year}-{month:02d}.json")
 
 start_ms, end_ms = month_bounds_ms(year, month)
 
