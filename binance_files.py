@@ -10,6 +10,10 @@ def kline_url(symbol: str, interval: str, year_month: str) -> str:
     return f"{BASE_URL}/klines/{symbol}/{interval}/{symbol}-{interval}-{year_month}.zip"
 
 
+def funding_url(symbol: str, year_month: str) -> str:
+    return f"{BASE_URL}/fundingRate/{symbol}/{symbol}-fundingRate-{year_month}.zip"
+
+
 def download(url: str, dest: Path) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
     response = requests.get(url, timeout=30)
