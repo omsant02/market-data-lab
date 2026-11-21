@@ -2,7 +2,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-from market_data_lab.klines import check_hourly, load_klines
+from market_data_lab.binance.klines import check_hourly, load_klines
 
 
 def section(title: str) -> None:

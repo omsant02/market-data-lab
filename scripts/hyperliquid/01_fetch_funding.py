@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 
-from market_data_lab.hyperliquid_api import funding_history, month_bounds_ms
-from market_data_lab.report import section
+from market_data_lab.hyperliquid.api import funding_history, month_bounds_ms
+from market_data_lab.common.report import section
 
 coin = "BTC"
 year, month = 2026, 10

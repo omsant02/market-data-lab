@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from market_data_lab.binance_files import download, kline_url, unzip
+from market_data_lab.binance.files import download, kline_url, unzip
 
 symbol = "BTCUSDT"
 interval = "1h"

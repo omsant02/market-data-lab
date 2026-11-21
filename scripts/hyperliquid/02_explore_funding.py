@@ -2,8 +2,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-from market_data_lab.hyperliquid_funding import check_hl_funding, load_hl_funding
-from market_data_lab.report import section
+from market_data_lab.hyperliquid.funding import check_hl_funding, load_hl_funding
+from market_data_lab.common.report import section
 
 RAW_FILE = Path("data/raw/hyperliquid-BTC-funding-2026-10.json")
 CHART_FILE = Path("data/hyperliquid_funding_oct_2026.png")
