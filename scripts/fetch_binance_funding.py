@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from binance_files import download, funding_url, unzip
+from market_data_lab.binance_files import download, funding_url, unzip
 
 symbol = "BTCUSDT"
 month = "2026-10"

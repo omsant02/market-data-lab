@@ -2,8 +2,8 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-from funding import check_funding, load_funding
-from report import section
+from market_data_lab.funding import check_funding, load_funding
+from market_data_lab.report import section
 
 df = load_funding(Path("data/raw/BTCUSDT-fundingRate-2026-10.csv"))
 
