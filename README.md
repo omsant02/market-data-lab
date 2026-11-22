@@ -53,6 +53,7 @@ milliseconds like the other two sources.
       hyperliquid/
       defillama/
       compare/               scripts that use more than one source
+    tests/                   automatic checks (pytest) on tiny tables with known answers
     data/                    downloaded data and charts, grouped by source
                              (ignored by git)
 
@@ -74,6 +75,7 @@ with lines like `from market_data_lab.binance.klines import load_klines`.
 | json (standard library) | Saves and reads the raw API replies |
 | pandas | Loads tables, converts times, checks quality, calculates returns and yearly rates |
 | matplotlib | Draws and saves charts |
+| pytest | Runs the automatic checks in tests/ |
 | Git and GitHub | Tracks changes and publishes the code. Data and the private environment are ignored |
 
 ## Scripts, in flow order
@@ -151,3 +153,7 @@ Run these from the repo root.
     uv run python scripts/compare/01_funding_binance_vs_hyperliquid.py
     uv run python scripts/defillama/01_fetch_tvl.py
     uv run python scripts/defillama/02_explore_tvl.py
+
+Run the automatic checks:
+
+    uv run pytest
