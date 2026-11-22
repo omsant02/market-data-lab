@@ -1,7 +1,7 @@
 # market-data-lab
 
 Small Python scripts that fetch and explore real crypto market data:
-Binance public files, the Hyperliquid API and DefiLlama (coming).
+Binance public files, the Hyperliquid API and DefiLlama.
 Downloaded data is never stored in this repo.
 
 ## The story in plain words
@@ -36,15 +36,22 @@ Hyperliquid has no files to download. We ask its API instead:
 A browser address bar sends GET requests. This endpoint expects POST,
 so opening the address in a browser shows an error. That is expected.
 
+DefiLlama is a third way: a plain GET request. It is just an address with
+no message body, so a browser can open it too. The reply is a list of
+days with a TVL value for each. Its dates are in seconds, not
+milliseconds like the other two sources.
+
 ## Layout
 
     src/market_data_lab/     library code, imported by the scripts
       common/                shared helpers (readable printing)
       binance/               address building, loading and checking Binance data
       hyperliquid/           API requests, loading and checking Hyperliquid data
+      defillama/             GET request, loading and checking DefiLlama data
     scripts/                 the things you run, numbered in flow order
       binance/
       hyperliquid/
+      defillama/
       compare/               scripts that use more than one source
     data/                    downloaded data and charts, grouped by source
                              (ignored by git)
@@ -80,6 +87,8 @@ with lines like `from market_data_lab.binance.klines import load_klines`.
 | scripts/hyperliquid/01_fetch_funding.py | Fetches one month of BTC funding history, saves the raw JSON |
 | scripts/hyperliquid/02_explore_funding.py | Loads and checks it, converts text to numbers, summary, chart |
 | scripts/compare/01_funding_binance_vs_hyperliquid.py | Daily average yearly funding of both venues side by side, the gap, a chart |
+| scripts/defillama/01_fetch_tvl.py | Downloads the daily history of total DeFi TVL, saves the raw JSON |
+| scripts/defillama/02_explore_tvl.py | Loads and checks it, October 2026 summary, chart |
 
 ## What the data looks like
 
@@ -112,12 +121,19 @@ Comparison (daily averages, October 2026):
   interest component both exchanges document: 0.01 percent per 8 hours, which is
   0.00125 percent per hour.
 
+Total DeFi TVL (DefiLlama, all chains, one GET request):
+- The full history has 3344 daily rows, from 27 Sep 2017 to 22 Nov 2026, with no
+  duplicates and no missing days. The first rows are 0, from before DeFi existed.
+- October 2026: TVL went from 91.6 to 81.6 billion dollars (down 10.9 percent),
+  with a low of 80.8 and a high of 93.4.
+- TVL is counted in dollars, so falling coin prices push it down too. That
+  effect is not separated yet.
+
 One month, one coin, two venues with different payment rhythms: no
 conclusion about carry yet.
 
 ## Next steps
 
-- Add a DefiLlama script (a GET request). It is the last planned source.
 - Add tests (pytest) for the quality checks.
 - Redo the analysis in Polars, then explore the same files with SQL in DuckDB.
 
@@ -133,3 +149,5 @@ Run these from the repo root.
     uv run python scripts/hyperliquid/01_fetch_funding.py
     uv run python scripts/hyperliquid/02_explore_funding.py
     uv run python scripts/compare/01_funding_binance_vs_hyperliquid.py
+    uv run python scripts/defillama/01_fetch_tvl.py
+    uv run python scripts/defillama/02_explore_tvl.py
